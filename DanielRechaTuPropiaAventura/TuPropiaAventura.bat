@@ -17,11 +17,9 @@ echo 2. El Bosque de las Sombras
 set /p choice1=Elige 1 o 2: 
 if "%choice1%"=="1" ( goto Biblioteca )
 if "%choice1%"=="2" ( goto Bosque )
-else ( echo opcion no valida
+echo opcion no valida.
 pause
-    goto Inicio
-    timeout /t 3 /nobreak
- )
+goto Inicio
 :Biblioteca
 cls
 color 0E
@@ -35,11 +33,9 @@ set /p choice2=Elige 1 o 2:
 
 if "%choice2%"=="1"( goto LuchaEncapuchado )
 if "%choice2%"=="2" ( goto HuirBiblioteca )
-else ( echo opcion no valida
+echo opcion no valida.
 pause
-    goto Biblioteca
-timeout /t 3 /nobreak
-)
+goto Biblioteca
 :LuchaEncapuchado
 cls
 color 04
@@ -68,8 +64,10 @@ set /p choice3=Elige 1 o 2:
 
 if "%choice3%"=="1" goto HablarCriatura
 if "%choice3%"=="2" goto Esconderse
-else ( echo opcion no valida
-    goto Bosque)
+echo opcion no valida.
+pause
+goto Bosque
+
 
 :HablarCriatura
 cls
@@ -84,8 +82,10 @@ set /p choice4=Elige 1 o 2:
 
 if "%choice4%"=="1" goto BuscarPista
 if "%choice4%"=="2" goto Torre
-else ( echo opcion no valida
-    goto HablarCriatura)
+echo opcion no valida.
+pause
+goto HablarCriatura
+
 :Esconderse
 cls
 color 08
@@ -106,8 +106,10 @@ set /p choice5=Elige 1 o 2:
 
 if "%choice5%"=="1" goto FuerzaBruta
 if "%choice5%"=="2" goto Mecanismo
-else ( echo opcion no valida
-    goto Torre)
+echo opcion no valida.
+pause
+goto Torre
+
 :FuerzaBruta
 cls
 color 04
@@ -128,8 +130,10 @@ set /p choice6=Elige 1 o 2:
 
 if "%choice6%"=="1" goto Final3
 if "%choice6%"=="2" goto Final4
-else ( echo opcion no valida
-    goto Mecanismo)
+echo opcion no valida.
+pause
+goto Mecanismo
+
 :BuscarPista
 cls
 color 0A
