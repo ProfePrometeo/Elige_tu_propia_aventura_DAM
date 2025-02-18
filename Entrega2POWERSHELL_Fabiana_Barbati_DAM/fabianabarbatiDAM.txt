@@ -1,0 +1,190 @@
+# Configurar el título
+$host.UI.RawUI.WindowTitle = "El Destino de Eldoria"
+
+function Esperar-Entrada {
+    Read-Host "Presiona Enter para continuar..."
+}
+
+function Mostrar-Titulo {
+    Clear-Host
+    Write-Host "================================" -ForegroundColor Yellow
+    Write-Host "     EL DESTINO DE ELDORIA     " -ForegroundColor Yellow
+    Write-Host "================================" -ForegroundColor Yellow
+    Write-Host ""
+}
+
+function Inicio {
+    Mostrar-Titulo
+    Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."
+    Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+    Write-Host "Solo una persona puede recuperarlo: tú."
+    Write-Host ""
+    Write-Host "¿Dónde comienzas tu búsqueda?"
+    Write-Host "1. La Biblioteca de los Sabios"
+    Write-Host "2. El Bosque de las Sombras"
+    $choice1 = Read-Host "Elige 1 o 2"
+
+    if ($choice1 -eq "1") { Biblioteca }
+    elseif ($choice1 -eq "2") { Bosque }
+}
+
+function Biblioteca {
+    Clear-Host
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco."
+    Write-Host "Una figura encapuchada te observa y susurra: 'No deberías estar aquí...'"
+    Write-Host ""
+    Write-Host "¿Qué harás?"
+    Write-Host "1. Enfrentarlo con tu espada"
+    Write-Host "2. Huir y buscar más pistas"
+    $choice2 = Read-Host "Elige 1 o 2"
+
+    if ($choice2 -eq "1") { LuchaEncapuchado }
+    elseif ($choice2 -eq "2") { HuirBiblioteca }
+}
+
+function LuchaEncapuchado {
+    Clear-Host
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rápido y te esquiva."
+    Write-Host "Lanza un hechizo, inmovilizándote. Antes de perder el conocimiento, escuchas:"
+    Write-Host "'Has cometido un error...'"
+    Esperar-Entrada
+    Final1
+}
+
+function HuirBiblioteca {
+    Clear-Host
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicación exacta de la Torre del Eco."
+    Write-Host "Decides partir de inmediato."
+    Esperar-Entrada
+    Torre
+}
+
+function Bosque {
+    Clear-Host
+    Write-Host "El bosque está envuelto en niebla. Encuentras un círculo de piedras brillantes."
+    Write-Host "Una criatura sombría emerge de entre los árboles."
+    Write-Host ""
+    Write-Host "¿Qué harás?"
+    Write-Host "1. Hablar con la criatura"
+    Write-Host "2. Esconderte y observar"
+	$choice3 = Read-Host "Elige 1 o 2"
+	if ($choice3 -eq "1") { HablarCriatura }
+	elseif ($choice3 -eq "2") { Esconderse }
+}
+
+function HablarCriatura {
+	Clear-Host
+	Write-Host "La criatura se presenta como un guardian del cristal."
+	Write-Host ""
+	Write-Host "¿Le crees?"
+	Write-Host "1. Si, decides buscar otra pista"
+	Write-Host "2.No, continuas en la torre"
+	$choice4 = Read-Host "Elige 1 o 2"
+
+	if ($choice4 -eq "1") { BuscarPista }
+	elseif ($choice4 -eq "2") { Torre }
+}
+
+function Esconderse {
+	Clear-Host 
+	Write-Host "Observas en silencio y ves a la criatura abrir un portal."
+	Write-Host "Sin dudar, te cuelas en el y apareces dentro de la torre del Alba."
+	Esperar-Entrada
+	Torre
+}
+
+function Torre {
+	Clear-Host
+	Write-Host "La torre del Eco es un lugar oscuro y en ruinas."
+	Write-Host "Encuentras el cristal del Alba, pero hay una trampa magica."
+	Write-Host ""
+	Write-Host "¿Como intentas desactivarla?"
+	Write-Host "1.Con fuerza bruta"
+	Write-Host "2.Buscando un mecanismo oculto"
+	$choice5 = Read-Host "Elige 1 o 2"
+	
+	if ($choice5 -eq "1") { FuerzaBruta }
+	elseif ($choice5 -eq "2") { Mecanismo }
+}
+
+function FuerzaBruta {
+	Clear-Host
+	Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion."
+	Write-Host "Todo se vuelve blanco."
+	Esperar-Entrada	
+	Final2
+}
+
+function Mecanismo {
+	Clear-Host
+	Write-Host "Encuentras un patron en el suelo y lo activas con cuidado."
+	Write-Host "La trampa se desactiva y puedes tomar el cristal."
+	Write-Host ""
+	Write-Host "Que haras ahora?"
+	Write-Host "1. Regresar a Eldoria"
+	Write-Host "2. Usar el poder del cristal para ti mismo"
+	$choice6 = Read-Host "Elige 1 o 2"
+
+	if ($choice6 -eq "1") { Final3 }
+	elseif ($choice6 -eq "2") { Final4 }
+}
+
+
+function BuscarPista {
+	Clear-Host
+	Write-Host "Ignoras la torre y sigues el consejo de la criatura"
+	Write-Host "Descubres que el verdadero cristal estaba oculto en el templo del Alba"
+
+	Esperar-Entrada
+	Final3
+}
+
+function Final1 {
+	Clear-Host
+	Write-Host "================================" -ForegroundColor Gray
+	Write-Host "      final: destino sellado    " -ForegroundColor Gray
+	Write-Host "================================" -ForegroundColor Gray
+	Write-Host "Fuiste derrotado antes de conocer la verdad."
+	Write-Host "El cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad"
+	Esperar-Entrada
+	exit
+}
+
+function Final2 {
+	Clear-Host
+	Write-Host "================================" -ForegroundColor Red
+	Write-Host "      final: el fin del reino   " -ForegroundColor Red
+	Write-Host "================================" -ForegroundColor Red
+	Write-Host "El hechizo destruyo la torre y contido adentro."
+	Write-Host "Sin el cristal del alba, Eldoria colapsa en el caos."
+	Esperar-Entrada
+	exit
+}
+
+
+
+function Final3 {
+	Clear-Host
+	Write-Host "================================" -ForegroundColor Green
+	Write-Host "  final: el heroe de eldoria    " -ForegroundColor Green
+	Write-Host "================================" -ForegroundColor Green
+	Write-Host "Regresas con el cristal del alba y restauras el equilibrio."
+	Write-Host "El reino celebra tu valentia y tu nombre sera recordado para siempre"
+	Esperar-Entrada
+	exit
+}
+
+function Final4 {
+	Clear-Host
+	Write-Host "================================" -ForegroundColor Magenta
+	Write-Host "  final: el nuevo señor oscuro    " -ForegroundColor Magenta
+	Write-Host "================================" -ForegroundColor Magenta
+	Write-Host "Decides usar el cristal para aumentar tu poder."
+	Write-Host "Te conviertes en un ser temido, gobernando con puño de hierro."
+	Esperar-Entrada
+	exit
+}
+
+
+
+Inicio
