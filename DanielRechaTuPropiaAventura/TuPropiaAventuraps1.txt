@@ -1,0 +1,247 @@
+# ------- Funciones -------
+function Inicio {
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    Clear-Host
+    Write-Host "===============================" -ForegroundColor Cyan
+    Write-Host "     EL DESTINO DE ELDORIA     " -ForegroundColor Cyan
+    Write-Host "===============================" -ForegroundColor Cyan
+    Write-Host
+    Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."-ForegroundColor Cyan
+    Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."-ForegroundColor Cyan
+    Write-Host "Solo una persona puede recuperarlo: tí."-ForegroundColor Cyan
+    Write-Host
+    Write-Host "A ¿Dónde comienzas tu búsqueda?"-ForegroundColor Cyan
+    Write-Host "1. La Biblioteca de los Sabios"-ForegroundColor Cyan
+    Write-Host "2. El Bosque de las Sombras"-ForegroundColor Cyan
+    $choice = Read-Host "Elige 1 o 2"
+    if ($choice -eq '1') {
+        Biblioteca
+    } elseif ($choice -eq '2') {
+        Bosque
+    } else {
+        Write-Host "Opción no válida." -ForegroundColor Red
+        Pause
+        Inicio
+    }
+}
+
+function Biblioteca {
+    Clear-Host
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco." -ForegroundColor Gray
+    Write-Host "Una figura encapuchada te observa y susurra: 'No deberías estar aquí...'" -ForegroundColor Gray
+    Write-Host
+    Write-Host "¿Qué harás?" -ForegroundColor Gray
+    Write-Host "1. Enfrentarlo con tu espada" -ForegroundColor Gray
+    Write-Host "2. Huir y buscar más pistas" -ForegroundColor Gray
+    $choice = Read-Host "Elige 1 o 2" 
+
+    if ($choice -eq '1') {
+        LuchaEncapuchado
+    } elseif ($choice -eq '2') {
+        HuirBiblioteca
+    } else {
+        Write-Host "Opción no válida." -ForegroundColor Red
+        Pause
+        Biblioteca
+    }
+}
+
+function Bosque {
+    Clear-Host
+    Write-Host "El bosque está¡ envuelto en niebla. Encuentras un círculo de piedras brillantes." -ForegroundColor Blue
+    Write-Host "Una criatura sombría emerge de entre los Ãrboles."-ForegroundColor Blue
+    Write-Host
+    Write-Host "¿Qué harás?"-ForegroundColor Blue
+    Write-Host "1. Hablar con la criatura"-ForegroundColor Blue
+    Write-Host "2. Esconderte y observar"-ForegroundColor Blue
+    $choice = Read-Host "Elige 1 o 2"
+
+    if ($choice -eq '1') {
+        HablarCriatura
+    } elseif ($choice -eq '2') {
+        Esconderse
+    } else {
+        Write-Host "Opción no válida." -ForegroundColor Red
+        Pause
+        Bosque
+    }
+}
+
+function LuchaEncapuchado {
+    Clear-Host
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rápido y te esquiva." -ForegroundColor Yellow
+    Write-Host "Lanza un hechizo, inmovilizándote. Antes de perder el conocimiento, escuchas:" -ForegroundColor Yellow
+    Write-Host "'Has cometido un error...'" -ForegroundColor Yellow
+    Final1
+}
+
+function HuirBiblioteca {
+    Clear-Host
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicación exacta de la Torre del Eco." -ForegroundColor Green
+    Write-Host "Decides partir de inmediato." -ForegroundColor Green
+    Torre
+}
+
+function HablarCriatura {
+    Clear-Host
+    Write-Host "La criatura se presenta como un guardián del Cristal." -ForegroundColor Blue
+    Write-Host "Te advierte que la Torre del Eco es una trampa mortal."-ForegroundColor Blue
+    Write-Host
+    Write-Host "¿Le crees?"-ForegroundColor Blue
+    Write-Host "1. Sí, decides buscar otra pista."-ForegroundColor Blue
+    Write-Host "2. No, continúas a la torre." -ForegroundColor Blue
+    $choice = Read-Host "Elige 1 o 2"
+
+    if ($choice -eq '1') {
+        BuscarPista
+    } elseif ($choice -eq '2') {
+        Torre
+    } else {
+        Write-Host "Opción no válida." -ForegroundColor Red
+        Pause
+        HablarCriatura
+    }
+}
+
+function Esconderse {
+    Clear-Host
+    Write-Host "Observas en silencio y ves a la criatura abrir un portal." -ForegroundColor Purple
+    Write-Host "Sin dudar, te cuelas en Ã©l y apareces dentro de la Torre del Eco." -ForegroundColor Purple
+    Torre
+}
+
+function Torre {
+    Clear-Host
+    Write-Host "La Torre del Eco es un lugar oscuro y en ruinas."
+    Write-Host "Encuentras el Cristal del Alba, pero hay una trampa mágica."
+    Write-Host
+    Write-Host "¿Cómo intentas desactivarla?"
+    Write-Host "1. Con fuerza bruta."
+    Write-Host "2. Buscando un mecanismo oculto."
+    $choice = Read-Host "Elige 1 o 2"
+
+    if ($choice -eq '1') {
+        FuerzaBruta
+    } elseif ($choice -eq '2') {
+        Mecanismo
+    } else {
+        Write-Host "Opción no válida." -ForegroundColor Red
+        Pause
+        Torre
+    }
+}
+
+function FuerzaBruta {
+    Clear-Host
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestrucción."
+    Write-Host "Todo se vuelve blanco."
+    Final2
+}
+
+function Mecanismo {
+    Clear-Host
+    Write-Host "Encuentras un patrón en el suelo y lo activas con cuidado."
+    Write-Host "La trampa se desactiva y puedes tomar el Cristal."
+    Write-Host
+    Write-Host "¿Qué harás ahora?"
+    Write-Host "1. Regresar a Eldoria."
+    Write-Host "2. Usar el poder del Cristal para ti mismo."
+    $choice = Read-Host "Elige 1 o 2"
+
+    if ($choice -eq '1') {
+        Final3
+    } elseif ($choice -eq '2') {
+        Final4
+    } else {
+        Write-Host "Opción no válida." -ForegroundColor Red
+        Pause
+        Mecanismo
+    }
+}
+
+function BuscarPista {
+    Clear-Host
+    Write-Host "Ignoras la Torre y sigues el consejo de la criatura."
+    Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba."
+    Final3
+}
+
+# ------- Finales -------
+function Final1 {
+    Write-Host "=======================================" -ForegroundColor Red
+    Write-Host "          FINAL: DESTINO SELLADO" -ForegroundColor Red
+    Write-Host "=======================================" -ForegroundColor Red
+    Write-Host "Fuiste derrotado antes de conocer la verdad." -ForegroundColor Red
+    Write-Host "El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad." -ForegroundColor Red
+  PlayAgain -final "final1"
+}
+
+function Final2 {
+    Write-Host "=======================================" -ForegroundColor Red
+    Write-Host "         FINAL: EL FIN DEL REINO" -ForegroundColor Red
+    Write-Host "=======================================" -ForegroundColor Red
+    Write-Host "El hechizo destruye la torre y contigo dentro." -ForegroundColor Red
+    Write-Host "Sin el Cristal del Alba, Eldoria colapsa en el caos." -ForegroundColor Red
+   PlayAgain -final "final2"
+}
+
+function Final3 {
+    Write-Host "=======================================" -ForegroundColor Cyan
+    Write-Host "        FINAL: EL HÉROE DE ELDORIA" -ForegroundColor Cyan
+    Write-Host "=======================================" -ForegroundColor Cyan
+    Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio." -ForegroundColor Cyan
+    Write-Host "El reino celebra tu valentía y tu nombre sera recordado para siempre." -ForegroundColor Cyan
+  PlayAgain -final "final3"
+}
+
+function Final4 {
+    Write-Host "=======================================" -ForegroundColor Black
+    Write-Host "       FINAL: EL NUEVO SEÑOR OSCURO" -ForegroundColor Black
+    Write-Host "=======================================" -BackgroundColor Black
+    Write-Host "Decides usar el Cristal para aumentar tu poder." -ForegroundColor Black
+    Write-Host "Te conviertes en un ser temido, gobernando con puño de hierro." -ForegroundColor Black
+   PlayAgain -final "final4"
+}
+
+function PlayAgain{
+param(
+[string]$final
+)
+Write-Host " "
+Write-Host "1 Jugar otra vez"
+Write-Host "2 Salir"
+
+$choice = Read-Host "Elige 1 o 2" 
+
+
+if($choice -eq '1'){
+Clear-Host
+Inicio
+}
+elseif($choice -eq '2'){
+Pause
+Exit
+}else{
+ Write-Host "Opción no válida." -ForegroundColor Red
+ Pause
+ Clear-Host
+ if($final -eq 'final1'){
+ Final1
+ }
+elseif($final -eq 'final2') {
+Final2
+}
+elseif($final -eq 'final3'){
+Final3
+}elseif($final -eq 'final4'){
+Final4
+}else{
+PlayAgain
+}
+ 
+}
+
+}
+
+# ------- Inicio del Juego -------
+Inicio
