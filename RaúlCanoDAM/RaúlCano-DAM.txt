@@ -1,0 +1,178 @@
+﻿# El Destino de Eldoria - Versión Modificada
+
+
+# Funciones para imprimir texto con colores personalizados
+function Print-TextWithColor {
+    param(
+      [string]$Texto,
+      [ConsoleColor]$ColorTexto = "Yellow",
+      [ConsoleColor]$ColorFondo = "Black"
+    )
+    Write-Host -ForegroundColor $ColorTexto -BackgroundColor $ColorFondo $Texto
+}
+
+
+# Función para obtener la elección del jugador
+function Get-UserChoice {
+    param(
+        [string]$Mensaje,
+        [ValidateRange(1, 2)][int]$Min = 1,
+        [ValidateRange(1, 2)][int]$Max = 2
+    )
+    while ($true) {
+        $eleccion = Read-Host $Mensaje
+        if ($eleccion -match "^[$Min-$Max]$") { # Asegura un número dentro del rango
+            return [int]$eleccion
+        }
+        Print-TextWithColor "Elección inválida. Intenta de nuevo." -ForegroundColor "Red"
+    }
+}
+
+
+# Inicio del juego
+Clear-Host
+Print-TextWithColor "================================" -ForegroundColor "Yellow"
+Print-TextWithColor "       EL DESTINO DE ELDORIA" -ForegroundColor "Yellow"
+Print-TextWithColor "================================" -ForegroundColor "Yellow"
+Print-TextWithColor ""
+
+
+Print-TextWithColor "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."
+Print-TextWithColor "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+Print-TextWithColor "Solo una persona puede recuperarlo: tú."
+Print-TextWithColor ""
+
+
+Print-TextWithColor "¿Dónde comenzarás tu búsqueda?"
+Print-TextWithColor "1. La Biblioteca de los Sabios"
+Print-TextWithColor "2. El Bosque de las Sombras"
+
+
+$eleccion1 = Get-UserChoice "Elige 1 o 2:"
+
+
+if ($eleccion1 -eq 1) {
+    # Biblioteca
+    Clear-Host
+    Print-TextWithColor "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco." -ForegroundColor "Green"
+    Print-TextWithColor "Una figura encapuchada te observa y susurra: No deberías estar aquí..." -ForegroundColor "Green"
+    Print-TextWithColor ""
+    
+    Print-TextWithColor "¿Qué harás?"
+    Print-TextWithColor "1. Enfrentarlo con tu espada"
+    Print-TextWithColor "2. Huir y buscar más pistas"
+    
+    $eleccion2 = Get-UserChoice "Elige 1 o 2:"
+    
+    if ($eleccion2 -eq 1) {
+        # Lucha con el Encapuchado
+        Clear-Host
+        Print-TextWithColor "Desenvainas tu espada y atacas, pero el encapuchado es rápido y te esquiva." -ForegroundColor "Red"
+        Print-TextWithColor "Lanza un hechizo, inmovilizándote. Antes de perder el conocimiento, escuchas:" -ForegroundColor "Red"
+        Print-TextWithColor "Has cometido un error..." -ForegroundColor "Red"
+        Print-TextWithColor "=====================================" -ForegroundColor "Gray"
+        Print-TextWithColor "         FINAL: DESTINO SELLADO" -ForegroundColor "Gray"
+        Print-TextWithColor "=====================================" -ForegroundColor "Gray"
+        Print-TextWithColor "Fuiste derrotado antes de conocer la verdad." -ForegroundColor "Gray"
+        Print-TextWithColor "El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad." -ForegroundColor "Gray"
+    } else {
+        # Huir de la Biblioteca
+        Clear-Host
+        Print-TextWithColor "Escapas de la biblioteca y encuentras un mapa con la ubicación exacta de la Torre del Eco." -ForegroundColor "Green"
+        Print-TextWithColor "Decides partir de inmediato." -ForegroundColor "Green"
+        
+        # Torre
+        Clear-Host
+        Print-TextWithColor "La Torre del Eco es un lugar oscuro y en ruinas." -ForegroundColor "White"
+        Print-TextWithColor "Encuentras el Cristal del Alba, pero hay una trampa mágica." -ForegroundColor "White"
+        Print-TextWithColor ""
+    
+        Print-TextWithColor "¿Cómo intentas desactivarla?"
+        Print-TextWithColor "1. Con fuerza bruta"
+        Print-TextWithColor "2. Buscando un mecanismo oculto"
+    
+        $eleccion5 = Get-UserChoice "Elige 1 o 2:"
+    
+        if ($eleccion5 -eq 1) {
+            # Intento con Fuerza Bruta
+            Clear-Host
+            Print-TextWithColor "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestrucción." -ForegroundColor "Red"
+            Print-TextWithColor "Todo se vuelve blanco." -ForegroundColor "Red"
+            Print-TextWithColor "=====================================" -ForegroundColor "Red"
+            Print-TextWithColor "         FINAL: EL FIN DEL REINO" -ForegroundColor "Red"
+            Print-TextWithColor "=====================================" -ForegroundColor "Red"
+            Print-TextWithColor "El hechizo destruyó la torre y contigo dentro." -ForegroundColor "Red"
+            Print-TextWithColor "Sin el Cristal del Alba, Eldoria colapsa en el caos." -ForegroundColor "Red"
+        } else {
+            # Mecanismo Oculto
+            Clear-Host
+            Print-TextWithColor "Encuentras un patrón en el suelo y lo activas con cuidado." -ForegroundColor "White"
+            Print-TextWithColor "La trampa se desactiva y puedes tomar el Cristal." -ForegroundColor "White"
+            Print-TextWithColor ""
+        
+            Print-TextWithColor "¿Qué harás ahora?"
+            Print-TextWithColor "1. Regresar a Eldoria"
+            Print-TextWithColor "2. Usar el poder del Cristal para ti mismo"
+        
+            $eleccion6 = Get-UserChoice "Elige 1 o 2:"
+        
+            if ($eleccion6 -eq 1) {
+                # Final 3
+                Clear-Host
+                Print-TextWithColor "=====================================" -ForegroundColor "Green"
+                Print-TextWithColor "         FINAL: EL HÉROE DE ELDORIA" -ForegroundColor "Green"
+                Print-TextWithColor "=====================================" -ForegroundColor "Green"
+                Print-TextWithColor "Regresas con el Cristal del Alba y restauras el equilibrio." -ForegroundColor "Green"
+                Print-TextWithColor "El reino celebra tu valentía y tu nombre será recordado para siempre." -ForegroundColor "Green"
+            } else {
+                # Final 4
+                Clear-Host
+                Print-TextWithColor "=====================================" -ForegroundColor "Magenta"
+                Print-TextWithColor "      FINAL: EL NUEVO SEÑOR OSCURO" -ForegroundColor "Magenta"
+                Print-TextWithColor "=====================================" -ForegroundColor "Magenta"
+                Print-TextWithColor "Decides usar el Cristal para aumentar tu poder." -ForegroundColor "Magenta"
+                Print-TextWithColor "Te conviertes en un ser temido, gobernando con puño de hierro." -ForegroundColor "Magenta"
+            }
+        }
+    }
+} else {
+    # Bosque
+    Clear-Host
+    Print-TextWithColor "El bosque está envuelto en niebla. Encuentras un círculo de piedras brillantes." -ForegroundColor "Green"
+    Print-TextWithColor "Una criatura sombría emerge de entre los árboles." -ForegroundColor "Green"
+    Print-TextWithColor ""
+    
+    Print-TextWithColor "¿Qué harás?"
+    Print-TextWithColor "1. Hablar con la criatura"
+    Print-TextWithColor "2. Esconderte y observar"
+    
+    $eleccion3 = Get-UserChoice "Elige 1 o 2:"
+    
+    if ($eleccion3 -eq 1) {
+        # Hablar con la Criatura
+        Clear-Host
+        Print-TextWithColor "La criatura se presenta como un guardián del Cristal." -ForegroundColor "Cyan"
+        Print-TextWithColor "Te advierte que la Torre del Eco es una trampa mortal." -ForegroundColor "Cyan"
+        Print-TextWithColor ""
+    
+        Print-TextWithColor "Le crees:"
+        Print-TextWithColor "1. Sí, decides buscar otra pista"
+        Print-TextWithColor "2. No, continúas a la torre"
+    
+        $eleccion4 = Get-UserChoice "Elige 1 o 2:"
+    
+        if ($eleccion4 -eq 1) {
+            # Buscar Pista Adicional
+            Clear-Host
+            Print-TextWithColor "Ignoras la Torre y sigues el consejo de la criatura." -ForegroundColor "Green"
+            Print-TextWithColor "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba." -ForegroundColor "Green"
+            # Final 3
+            Clear-Host
+            Print-TextWithColor "=====================================" -ForegroundColor "Green"
+            Print-TextWithColor "         FINAL: EL HÉROE DE ELDORIA" -ForegroundColor "Green"
+            Print-TextWithColor "=====================================" -ForegroundColor "Green"
+            Print-TextWithColor "Regresas con el Cristal del Alba y restauras el equilibrio." -ForegroundColor "Green"
+            Print-TextWithColor "El reino celebra tu valentía y tu nombre será recordado para siempre." -ForegroundColor "Green"
+        }
+    }
+}
