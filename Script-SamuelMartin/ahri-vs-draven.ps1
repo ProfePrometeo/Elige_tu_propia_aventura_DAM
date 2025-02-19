@@ -50,3 +50,73 @@ while ($Personaje1["Salud"] -gt 0 -and $Personaje2["Salud"] -gt 0) {
 }
 
 Write-Host "¡Fin de la batalla!"
+
+
+
+#Intento de arreglo del combate
+
+
+# # Simulación de batalla por turnos en PowerShell
+
+# # Definición de los personajes con su barra de salud inicial
+# $Personaje1 = @{ Nombre = "Ahri"; Salud = 100 }
+# $Personaje2 = @{ Nombre = "Draven"; Salud = 100 }
+
+# # Turno de combate
+# $Turno = 1
+
+# while ($Personaje1["Salud"] -gt 0 -and $Personaje2["Salud"] -gt 0) {
+#     Write-Host "Turno $Turno"
+#     $numeroAleatorio = Get-Random -Maximum 100
+#     # Opción de ataque o defensa
+#     $accion = Read-Host "Escribe 'A' para atacar o 'D' para defender"
+    
+#     if ($accion -eq "A") {
+#         if ($numeroAleatorio -ge 50) {
+#             $Personaje2["Salud"] -= 10
+#             Write-Host "$($Personaje1["Nombre"]) ataca a $($Personaje2["Nombre"])! Salud restante de $($Personaje2["Nombre"]): $($Personaje2["Salud"])"
+#         }
+#     } elseif ($accion -eq "D") {
+#         Write-Host "$($Personaje1["Nombre"]) se defiende y reducirá el daño recibido. Salud restante de $($Personaje1["Nombre"]): $($Personaje1["Salud"])"
+#     } else {
+#         Write-Host "Opción inválida, se perderá el turno."
+#     }
+    
+#     # Verificar si Personaje2 ha sido derrotado
+#     if ($Personaje2["Salud"] -le 0) {
+#         Write-Host "$($Personaje2["Nombre"]) ha sido derrotado! $($Personaje1["Nombre"]) gana la batalla."
+#         break
+#     }
+    
+#     # Respuesta automática del Personaje2
+#     Start-Sleep -Seconds 1  # Pausa breve para realismo
+    
+#     if ($accion -eq "D") {
+#         if ($numeroAleatorio -ge 50) {
+#             $Personaje1["Salud"] -= 5  # Daño reducido por defensa
+#             Write-Host "$($Personaje2["Nombre"]) ataca, pero $($Personaje1["Nombre"]) se defiende y solo recibe 5 puntos de daño. Salud restante de $($Personaje1["Nombre"]): $($Personaje1["Salud"])"
+#         } else {
+#             Write-Host "Ambos personajes han defendido, no hay daño realizado."
+#         }
+#     } else {
+#         if ($numeroAleatorio -ge 50) {
+#             $Personaje1["Salud"] -= 10  # Daño reducido por defensa
+#             Write-Host "$($Personaje2["Nombre"]) ataca, y le hace a $($Personaje1["Nombre"]) 10 puntos de daño. Salud restante de $($Personaje1["Nombre"]): $($Personaje1["Salud"])"
+#         } else {
+#             Write-Host "$($Personaje2["Nombre"]) se ha defendido, $($Personaje1["Nombre"]) ataca pero solo hace 5 puntos de daño Salud restante de $($Personaje2["Nombre"]): $($Personaje2["Salud"])"
+#             $Personaje2["Salud"] -= 10
+#             # Write-Host $Personaje2["Salud"]
+#         }
+#     }
+    
+#     # Verificar si Personaje1 ha sido derrotado
+#     if ($Personaje1["Salud"] -le 0) {
+#         Write-Host "$($Personaje1["Nombre"]) ha sido derrotado! $($Personaje2["Nombre"]) gana la batalla."
+#         break
+#     }
+    
+#     # Siguiente turno
+#     $Turno++
+# }
+
+# Write-Host "¡Fin de la batalla!"
