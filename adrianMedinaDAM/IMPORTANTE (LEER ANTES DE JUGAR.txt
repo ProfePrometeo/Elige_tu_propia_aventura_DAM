@@ -1,0 +1,4 @@
+Como pedía en el ejercicio, he modificado el archivo de Eldoria en CMD para que funcione en PowerShell.
+Sin embargo, he creado una historia alternativa que creo que será más divertida.
+Ambos scripts están programados igual, lo único que cambia es íntegramente la historia.
+Te recomiendo ampliamente que pruebes la Isla del Invocador. Muchas gracias.
