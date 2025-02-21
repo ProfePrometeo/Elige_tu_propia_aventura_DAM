@@ -1,0 +1,207 @@
+# El Destino de Eldoria - Versión PowerShell
+# Conversión básica del script CMD con mejoras de tolerancia a errores
+
+# Función para leer y validar la elección del usuario
+function Get-Choice {
+    param (
+        [string]$Prompt,
+        [string[]]$ValidOptions
+    )
+    while ($true) {
+        $choice = Read-Host $Prompt
+        if ($ValidOptions -contains $choice) {
+            return $choice
+        } else {
+            Write-Host "Opción inválida. Por favor, elige: $($ValidOptions -join ', ')" -ForegroundColor Red
+        }
+    }
+}
+
+# Inicio del juego
+function Start-Game {
+    Clear-Host
+    Write-Host "===============================" -ForegroundColor Yellow
+    Write-Host "     EL DESTINO DE ELDORIA" -ForegroundColor Yellow
+    Write-Host "===============================" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."
+    Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+    Write-Host "Solo una persona puede recuperarlo: tú."
+    Write-Host ""
+    Write-Host "¿Dónde comienzas tu búsqueda?"
+    Write-Host "1. La Biblioteca de los Sabios"
+    Write-Host "2. El Bosque de las Sombras"
+    
+    $choice1 = Get-Choice -Prompt "Elige 1 o 2:" -ValidOptions @("1","2")
+    if ($choice1 -eq "1") {
+        Biblioteca
+    } else {
+        Bosque
+    }
+}
+
+function Biblioteca {
+    Clear-Host
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco." -ForegroundColor Yellow
+    Write-Host "Una figura encapuchada te observa y susurra: No deberías estar aquí..."
+    Write-Host ""
+    Write-Host "¿Qué harás?"
+    Write-Host "1. Enfrentarlo con tu espada"
+    Write-Host "2. Huir y buscar más pistas"
+    
+    $choice2 = Get-Choice -Prompt "Elige 1 o 2:" -ValidOptions @("1","2")
+    if ($choice2 -eq "1") {
+        LuchaEncapuchado
+    } else {
+        HuirBiblioteca
+    }
+}
+
+function LuchaEncapuchado {
+    Clear-Host
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rápido y te esquiva." -ForegroundColor Red
+    Write-Host "Lanza un hechizo, inmovilizándote. Antes de perder el conocimiento, escuchas:"
+    Write-Host "Has cometido un error..."
+    Final1
+}
+
+function HuirBiblioteca {
+    Clear-Host
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicación exacta de la Torre del Eco." -ForegroundColor Green
+    Write-Host "Decides partir de inmediato."
+    Torre
+}
+
+function Bosque {
+    Clear-Host
+    Write-Host "El bosque está envuelto en niebla. Encuentras un círculo de piedras brillantes." -ForegroundColor Green
+    Write-Host "Una criatura sombría emerge de entre los árboles."
+    Write-Host ""
+    Write-Host "¿Qué harás?"
+    Write-Host "1. Hablar con la criatura"
+    Write-Host "2. Esconderte y observar"
+    
+    $choice3 = Get-Choice -Prompt "Elige 1 o 2:" -ValidOptions @("1","2")
+    if ($choice3 -eq "1") {
+        HablarCriatura
+    } else {
+        Esconderse
+    }
+}
+
+function HablarCriatura {
+    Clear-Host
+    Write-Host "La criatura se presenta como un guardián del Cristal." -ForegroundColor Cyan
+    Write-Host "Te advierte que la Torre del Eco es una trampa mortal."
+    Write-Host ""
+    Write-Host "¿Le crees?"
+    Write-Host "1. Sí, decides buscar otra pista"
+    Write-Host "2. No, continúas a la torre"
+    
+    $choice4 = Get-Choice -Prompt "Elige 1 o 2:" -ValidOptions @("1","2")
+    if ($choice4 -eq "1") {
+        BuscarPista
+    } else {
+        Torre
+    }
+}
+
+function Esconderse {
+    Clear-Host
+    Write-Host "Observas en silencio y ves a la criatura abrir un portal." -ForegroundColor DarkGray
+    Write-Host "Sin dudar, te cuelas en él y apareces dentro de la Torre del Eco."
+    Torre
+}
+
+function Torre {
+    Clear-Host
+    Write-Host "La Torre del Eco es un lugar oscuro y en ruinas." -ForegroundColor White
+    Write-Host "Encuentras el Cristal del Alba, pero hay una trampa mágica."
+    Write-Host ""
+    Write-Host "¿Cómo intentas desactivarla?"
+    Write-Host "1. Con fuerza bruta"
+    Write-Host "2. Buscando un mecanismo oculto"
+    
+    $choice5 = Get-Choice -Prompt "Elige 1 o 2:" -ValidOptions @("1","2")
+    if ($choice5 -eq "1") {
+        FuerzaBruta
+    } else {
+        Mecanismo
+    }
+}
+
+function FuerzaBruta {
+    Clear-Host
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestrucción." -ForegroundColor Red
+    Write-Host "Todo se vuelve blanco."
+    Final2
+}
+
+function Mecanismo {
+    Clear-Host
+    Write-Host "Encuentras un patrón en el suelo y lo activas con cuidado." -ForegroundColor White
+    Write-Host "La trampa se desactiva y puedes tomar el Cristal."
+    Write-Host ""
+    Write-Host "¿Qué harás ahora?"
+    Write-Host "1. Regresar a Eldoria"
+    Write-Host "2. Usar el poder del Cristal para ti mismo"
+    
+    $choice6 = Get-Choice -Prompt "Elige 1 o 2:" -ValidOptions @("1","2")
+    if ($choice6 -eq "1") {
+        Final3
+    } else {
+        Final4
+    }
+}
+
+function BuscarPista {
+    Clear-Host
+    Write-Host "Ignoras la Torre y sigues el consejo de la criatura." -ForegroundColor Green
+    Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba."
+    Final3
+}
+
+function Final1 {
+    Clear-Host
+    Write-Host "======================================" -ForegroundColor DarkGray
+    Write-Host "         FINAL: DESTINO SELLADO" -ForegroundColor DarkGray
+    Write-Host "======================================" -ForegroundColor DarkGray
+    Write-Host "Fuiste derrotado antes de conocer la verdad."
+    Write-Host "El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad."
+    Read-Host "Presiona ENTER para continuar..."
+
+}
+
+function Final2 {
+    Clear-Host
+    Write-Host "======================================" -ForegroundColor Red
+    Write-Host "       FINAL: EL FIN DEL REINO" -ForegroundColor Red
+    Write-Host "======================================" -ForegroundColor Red
+    Write-Host "El hechizo destruyó la torre y contigo dentro."
+    Write-Host "Sin el Cristal del Alba, Eldoria colapsa en el caos."
+    Read-Host "Presiona ENTER para continuar..."
+
+}
+
+function Final3 {
+    Clear-Host
+    Write-Host "======================================" -ForegroundColor Green
+    Write-Host "        FINAL: EL HÉROE DE ELDORIA" -ForegroundColor Green
+    Write-Host "======================================" -ForegroundColor Green
+    Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio."
+    Write-Host "El reino celebra tu valentía y tu nombre será recordado para siempre."
+    Read-Host "Presiona ENTER para continuar..."
+
+}
+
+function Final4 {
+    Clear-Host
+    Write-Host "======================================" -ForegroundColor Magenta
+    Write-Host "      FINAL: EL NUEVO SEÑOR OSCURO" -ForegroundColor Magenta
+    Write-Host "======================================" -ForegroundColor Magenta
+    Write-Host "Decides usar el Cristal para aumentar tu poder."
+    Write-Host "Te conviertes en un ser temido, gobernando con puño de hierro."
+}
+
+# Inicio del juego
+Start-Game
