@@ -1,0 +1,20 @@
+Conversión: CMD a PowerShell
+Script: El Destino de Eldoria
+
+1. Comandos convertidos:
+
+- cls → Clear-Host
+- title → $Host.UI.RawUI.WindowTitle
+- color → $Host.UI.RawUI.ForegroundColor
+- echo → Write-Host
+- set /p var= → $var = Read-Host
+- if/goto → switch + goto :etiqueta
+- pause → Pause o Read-Host simulado
+
+2. Colores:
+CMD usa códigos (color 0A), PowerShell usa nombres ("Green").
+
+3. Flujo de decisiones:
+- Uso de switch en lugar de múltiples if para claridad.
+- Se mantuvo el uso de goto :etiqueta para conservar el estilo de historia interactiva.
+
