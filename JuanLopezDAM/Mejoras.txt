@@ -1,0 +1,20 @@
+Mejoras en la Tolerancia a Errores del Script
+
+Se realizaron varias mejoras en el código original para aumentar la estabilidad y tolerancia a errores en PowerShell. A continuación, se resumen los principales cambios:
+
+Mejoras Implementadas:
+
+Manejo de Ejecución de Scripts: Se agregó una instrucción para informar al usuario si la ejecución de scripts está deshabilitada y se recomienda configurar la política con Set-ExecutionPolicy RemoteSigned -Scope CurrentUser.
+
+Corrección en la Llamada a Funciones: Se eliminaron los goto y se implementaron llamadas directas a funciones. También se corrigieron las comparaciones en estructuras if, usando -eq en lugar de ==.
+
+Mejora en la Captura de Entrada del Usuario: Se reemplazó set /p por Read-Host, con validaciones para evitar entradas no válidas.
+
+Reemplazo de exit por return: Para evitar que exit cierre la terminal inesperadamente, se usó return para finalizar correctamente el script.
+
+Inclusión de Mensajes de Depuración: Se agregaron mensajes de Write-Host para facilitar la depuración y el rastreo de errores.
+
+Pausa Estructurada: Se reemplazó el comando pause por una función Esperar-Entrada que usa Read-Host, deteniendo la ejecución hasta que el usuario presione Enter.
+
+Conclusión:
+Las mejoras hacen que el script sea más robusto y compatible con PowerShell, reduciendo errores y mejorando la experiencia del usuario.
